@@ -101,6 +101,9 @@ function p03TemplateFormat(input) {
 //     "What is the brightest star in the night sky?",
 //     "Sirius"]);    
 
+/*******************************************************************
+***************************/
+
 function p04CookingByNumbers(input) {
     let number = Number(input[0]);
 
