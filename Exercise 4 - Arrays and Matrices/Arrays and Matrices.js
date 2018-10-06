@@ -142,6 +142,41 @@ function p07MagicMatrices(input) {
 /*******************************
 ********************************************/
 
+function p09DiagonalAttack(input) {
+    let matrix = input
+        .map(r => r.split(' ').map(Number));
+
+    let diagonal1 = 0;
+    let diagonal2 = 0;
+
+    for (let r = 0; r < matrix.length; r++) {
+        for (let c = 0; c < matrix[0].length; c++) {
+            if (c === r) {
+                diagonal1 += matrix[r][c];
+            }
+
+            if (c === matrix[0].length - 1 - r) {
+                diagonal2 += matrix[r][c];
+            }
+        }
+    }
+
+    if (diagonal1 === diagonal2) {
+        for (let r = 0; r < matrix.length; r++) {
+            for (let c = 0; c < matrix[0].length; c++) {
+                if (c !== r && c !== matrix[0].length - 1 - r) {
+                    matrix[r][c] = diagonal1;
+                }
+            }
+        }
+    }
+    console.log(matrix.map(row => row.join(' ')).join('\n'));
+}
+//p09DiagonalAttack(['5 3 12 3 1', '11 4 23 2 5', '101 12 3 21 10', '1 4 5 2 2', '5 22 33 11 1']);
+
+/*******************************
+********************************************/
+
 
 
 
