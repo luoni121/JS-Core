@@ -142,6 +142,58 @@ function p07MagicMatrices(input) {
 /*******************************
 ********************************************/
 
+function p08SpiralMatrices(a, b) {
+    let matrix = [];
+    for (let i = 0; i < a; i++) {
+        matrix[i] = [];
+    }
+
+    let i = 1;
+    let row = 0;
+    let col = 0;
+    let step = 0;
+
+    while (i <= a * b) {
+        while (col + step < a) {
+            matrix[row][col] = i;
+            col++;
+            i++;
+        }
+        col--;
+        row++;
+
+        while (row + step < b) {
+            matrix[row][col] = i;
+            row++;
+            i++;
+        }
+        row--;
+        col--;
+
+        while (col >= step) {
+            matrix[row][col] = i;
+            col--;
+            i++;
+        }
+        col++;
+        row--;
+        step++;
+
+        while (row >= step) {
+            matrix[row][col] = i;
+            row--;
+            i++;
+        }
+        row++;
+        col++;
+    }
+    console.log(matrix.map(row => row.join(' ')).join('\n'));
+}
+// p08SpiralMatrices(5, 5);
+
+/*******************************
+********************************************/
+
 function p09DiagonalAttack(input) {
     let matrix = input
         .map(r => r.split(' ').map(Number));
