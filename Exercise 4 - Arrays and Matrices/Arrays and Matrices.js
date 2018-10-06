@@ -103,6 +103,45 @@ function p06SortArrayBy2Criteria(input) {
 /*******************************
 ********************************************/
 
+function p07MagicMatrices(input) {
+    let matrix = [].concat(input);
+    let magicalSum = matrix[0].reduce((a, b) => (a + b));
+
+    //var rowSum = matrix.map(r => r.reduce((a, b) => a + b));
+    //var colSum = matrix.reduce((a, b) => a.map((x, i) => x + b[i]));
+    
+    for (let r = 0; r < matrix.length; r++) {
+        let sum = matrix[r].reduce((a, b) => (a + b));
+        if (sum !== magicalSum) {
+            return console.log(false);
+        }
+    }
+
+    for (let c = 0; c < matrix[0].length; c++) {
+        let sum = 0;
+        for (let r = 0; r < matrix.length; r++) {
+            sum += matrix[r][c];
+        }
+        if (sum !== magicalSum) {
+            return console.log(false);
+        }
+    }
+    console.log(true);
+}
+// p07MagicMatrices(
+//     [[4, 5, 6],
+//     [6, 5, 4],
+//     [5, 5, 5]]
+// );
+
+// p07MagicMatrices(
+//     [[4, 5, 6],
+//     [6, 5, 4]]
+// );
+
+/*******************************
+********************************************/
+
 
 
 
