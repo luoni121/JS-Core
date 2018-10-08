@@ -83,6 +83,56 @@ function p03CappyJuice(input) {
 /*******************************************************************
 ***************************/
 
+function p04StoreCatalogue(input) {
+
+    let products = input.map(element => {
+        let temp = element.split(' : ');
+        return {
+            product: temp[0],
+            price: Number(temp[1])
+        }
+    });
+
+    let set = new Set();
+
+    products.forEach(item => {
+        let letter = item.product[0];
+        set.add(letter);
+    });
+
+    Array.from(set).sort().forEach(letter => {
+        console.log(letter);
+
+        for (obj of products.sort((a, b) => compare(a.product, b.product))) {
+            if (letter === obj.product[0]) {
+                console.log('  ' + obj.product + ': ' + obj.price);
+            }
+        }
+    });
+
+    function compare(a, b) {
+
+        let comparison = 0;
+        if (a > b) {
+            comparison = 1;
+        } else if (a < b) {
+            comparison = -1;
+        }
+        return comparison;
+    }
+}
+// p04StoreCatalogue(['Appricot : 20.4',
+//     'Fridge : 1500',
+//     'TV : 1499',
+//     'Deodorant : 10',
+//     'Boiler : 300',
+//     'Apple : 1.25',
+//     'Anti-Bug Spray : 15',
+//     'T-Shirt : 10']);
+
+/*******************************************************************
+***************************/
+
 
 
 
