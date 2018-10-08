@@ -133,6 +133,49 @@ function p04StoreCatalogue(input) {
 /*******************************************************************
 ***************************/
 
+function p05AutoEngineering(input) {
+    let map = new Map();
+
+    input.forEach(element => {
+        let splitted = element.split(' | ');
+        let brand = splitted[0];
+        let model = splitted[1];
+        let producedNumber = Number(splitted[2]);
+
+        if (map.has(brand) === false) {
+            map.set(brand, new Map());
+        }
+
+        if (map.get(brand).has(model) === false) {
+            map.get(brand).set(model, 0);
+        }
+        let currentProducedNumber = map.get(brand).get(model);
+        map.get(brand).set(model, currentProducedNumber + producedNumber);
+    });
+
+    for (var [key, value] of map.entries()) {
+        console.log(key);
+
+        for (var [key, value1] of value) {
+            console.log('###%s -> %s', key, value1);
+        }
+    }
+}
+// p05AutoEngineering(['Audi | Q7 | 1000',
+//     'Audi | Q6 | 100',
+//     'BMW | X5 | 1000',
+//     'BMW | X6 | 100',
+//     'Citroen | C4 | 123',
+//     'Volga | GAZ-24 | 1000000',
+//     'Lada | Niva | 1000000',
+//     'Lada | Jigula | 1000000',
+//     'Citroen | C4 | 22',
+//     'Citroen | C5 | 10']);
+
+
+/*******************************************************************
+***************************/
+
 
 
 
