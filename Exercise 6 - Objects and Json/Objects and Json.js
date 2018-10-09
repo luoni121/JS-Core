@@ -253,6 +253,33 @@ function p06SystemComponents(input) {
 /*******************************************************************
 ***************************/
 
+function p08UniqueSequences(input) {
+    let arr = [];
+
+    input.forEach(string => {
+        let e = JSON.parse(string);
+
+        for (let item of arr) {
+            if (JSON.stringify(item.sort()) === JSON.stringify(e.sort())) {
+                return;
+            }
+        }
+        arr.push(e);
+    });
+
+    arr.sort((a, b) => a.length - b.length).
+        forEach(item => {
+            console.log(`[${item.sort((a, b) => b - a).join(', ')}]`)              
+        });
+}
+// p08UniqueSequences(["[-3, -2, -1, 0, 1, 2, 3, 4]",
+//     "[10, 1, -17, 0, 2, 13]",
+//     "[4, -3, 3, -2, 2, -1, 1, 0]"]);
+
+/*******************************************************************
+***************************/
+
+
 
 
 
