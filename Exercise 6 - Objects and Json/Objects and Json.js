@@ -172,6 +172,83 @@ function p05AutoEngineering(input) {
 //     'Citroen | C4 | 22',
 //     'Citroen | C5 | 10']);
 
+/*******************************************************************
+***************************/
+
+function p06SystemComponents(input) {
+    let map = new Map();
+
+    input.forEach(element => {
+        let [system, component, subComponent] = element.split(' | ');
+
+        if (!map.has(system)) {
+            map.set(system, new Map());
+        }
+
+        if (!map.get(system).has(component)) {
+            map.get(system).set(component, []);
+        }
+        map.get(system).get(component).push(subComponent);
+    });
+
+    let sortedSystems = Array.from(map.keys())
+        .sort((a, b) => map.get(b).size - map.get(a).size);
+
+    for (let key of sortedSystems) {
+        console.log(key);
+
+        let sortedComponents = Array.from(map.get(key).keys())
+            .sort((a, b) => map.get(key).get(b).length - map.get(key).get(a).length);
+
+        for (let item of sortedComponents) {
+            console.log('|||%s', item);
+
+            for (let subComp of map.get(key).get(item)) {
+                console.log('||||||%s', subComp);
+            }
+        }
+    }
+}
+// p06SystemComponents(['SULS | Main Site | Home Page',
+//     'SULS | Main Site | Login Page',
+//     'SULS | Main Site | Register Page',
+//     'SULS | Judge Site | Login Page',
+//     'SULS | Judge Site | Submittion Page',
+//     'Lambda | CoreA | A23',
+//     'SULS | Digital Site | Login Page',
+//     'Lambda | CoreB | B24',
+//     'Lambda | CoreA | A24',
+//     'Lambda | CoreA | A25',
+//     'Lambda | CoreC | C4',
+//     'Indice | Session | Default Storage',
+//     'Indice | Session | Default Security']);
+
+/*******************************************************************
+***************************/
+
+function p06SystemComponents(input) {
+    let set = new Set();
+
+    input.forEach(element => set.add(element));
+
+    let sortedArr = Array.from(set)
+        .sort((a, b) => a.length - b.length || a.localeCompare(b));
+
+    console.log(sortedArr.join('\n'));
+}
+// p06SystemComponents(['Denise',
+//     'Ignatius',
+//     'Iris',
+//     'Isacc',
+//     'Indie',
+//     'Dean',
+//     'Donatello',
+//     'Enfuego',
+//     'Benjamin',
+//     'Biser',
+//     'Bounty',
+//     'Renard',
+//     'Rot']);
 
 /*******************************************************************
 ***************************/
