@@ -1,0 +1,45 @@
+function p03DNA(input) {
+    let obj = {};
+    let regex = /([a-z\!\@\#\$\?]+)=([\d]+)--([\d]+)<<([a-z]+)/;
+    for (let data of input) {
+        if (data === 'Stop!') {
+            break;
+        }
+
+        let matches = data.match(regex);
+
+        if (matches) { // true
+
+            let name = matches[1].replace(/([^a-z0-9]+)/gi, '');    //replace all matches that is not letters //global regex /gi
+            let length = Number(matches[2]);
+            let count = Number(matches[3]);
+            let organism = matches[4];
+
+            if (name.length === length) {
+
+                if (obj.hasOwnProperty(organism) === false) {
+                    obj[organism] = count;
+                }
+                else {
+                    obj[organism] += count;
+                }
+            }
+        }
+    }
+
+    let sortedArray = [];
+    for (let item in obj) {
+        sortedArray.push([item, obj[item]]);
+    }
+
+    sortedArray.sort((a, b) => {
+        return b[1] - a[1]
+    });
+    sortedArray.forEach(x => console.log(`${x[0]} has genome size of ${x[1]}`));
+}
+
+// p03DNA(["!@ab?si?di!a@=7--152<<human",
+//     "b!etu?la@=6--321<<dog",
+//     "!curtob@acter##ium$=14--230<<dog",
+//     "!some@thin@g##=9<<human",
+//     "Stop!"]);
