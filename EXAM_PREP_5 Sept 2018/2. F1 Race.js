@@ -38,17 +38,17 @@ function p02F1Race(input) {
 
     console.log(pilots.join(' ~ '));
 }
-p02F1Race(["Vetel Hamilton Slavi",
-    "Pit Hamilton",
-    "Overtake Vetel",
-    "Crash Slavi"]);
+// p02F1Race(["Vetel Hamilton Slavi",
+//     "Pit Hamilton",
+//     "Overtake Vetel",
+//     "Crash Slavi"]);
 
-p02F1Race(["Vetel Hamilton Raikonnen Botas Slavi",
-    "Pit Hamilton",
-    "Overtake LeClerc",
-    "Join Ricardo",
-    "Crash Botas",
-    "Overtake Ricardo",
-    "Overtake Ricardo",
-    "Overtake Ricardo",
-    "Crash Slavi"]);
+// p02F1Race(["Vetel Hamilton Raikonnen Botas Slavi",
+//     "Pit Hamilton",
+//     "Overtake LeClerc",
+//     "Join Ricardo",
+//     "Crash Botas",
+//     "Overtake Ricardo",
+//     "Overtake Ricardo",
+//     "Overtake Ricardo",
+//     "Crash Slavi"]);
