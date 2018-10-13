@@ -1,0 +1,43 @@
+function p04Championship(input) {
+    let obj = {};
+    //team: {totalPoints: ***, pilots{}}
+    //pilots: {pilot: ***, points: ***}
+
+    input.forEach(data => {
+        let [team, pilot, points] = data.split(' -> ');
+
+        if (obj.hasOwnProperty(team) === false) {
+            obj[team] = {
+                totalPoints: 0,
+                pilots: {}
+            };
+        }
+        if (obj[team]["pilots"].hasOwnProperty(pilot) === false) {
+            obj[team]["pilots"][pilot] = 0;
+        }
+        obj[team]["pilots"][pilot] += Number(points);
+        obj[team]["totalPoints"] += Number(points);
+    });
+
+    //top 3 teams with biggest sum of pilot points as the first criteria 
+    let winners = Object.entries(obj)
+        .sort((a, b) => b[1]["totalPoints"] - a[1]["totalPoints"]).slice(0, 3);
+
+    //sort the pilots in every team depending on their points
+    for (let winnerTeam of winners) {
+        console.log(`${winnerTeam[0]}: ${winnerTeam[1]["totalPoints"]}`);
+
+        let sortedPilots = Object.entries(winnerTeam[1]["pilots"])
+        .sort((a, b) => b[1] - a[1]);
+
+        for (let pilot of sortedPilots) {
+            console.log(`-- ${pilot[0]} -> ${pilot[1]}`);
+        }
+    }
+}
+// p04Championship(["Ferrari -> Kimi Raikonnen -> 25",
+//     "Ferrari -> Sebastian Vettel -> 18",
+//     "Mercedes -> Lewis Hamilton -> 10",
+//     "Mercedes -> Valteri Bottas -> 8",
+//     "Red Bull -> Max Verstapen -> 6",
+//     "Red Bull -> Daniel Ricciardo -> 4"]);
